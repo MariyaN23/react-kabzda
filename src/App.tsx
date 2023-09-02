@@ -3,21 +3,28 @@ import './App.css';
 import Accordion from "./modules/accordion/Accordion";
 import {Rating, Rating as R} from './modules/Rating/Rating';
 import {OnOff} from './modules/onOff/OnOff';
+import UncontrolledAccordion from './modules/uncontrolledAccordion/UncontrolledAccordion';
+import {UncontrolledRating} from './modules/UncontrolledRating/Rating';
 
 function App() {
     console.log('App rendering')
     return (
         <div>
-            <Accordion titleValue={"Меню"} collapsed={true}/>
+            <OnOff />
+            <OnOff />
+            <OnOff />
+            <UncontrolledAccordion titleValue={"Меню"} />
+            <UncontrolledAccordion titleValue={"Друзья"} />
+            <UncontrolledRating />
+            {/*<Accordion titleValue={"Меню"} collapsed={true}/>
             <Accordion titleValue={"Друзья"} collapsed={false}/>
             <Rating value={0}/>
             <Rating value={1}/>
             <Rating value={2}/>
             <Rating value={3}/>
             <Rating value={4}/>
-            <Rating value={5}/>
-            <OnOff selected={true}/>
-            <OnOff selected={false}/>
+            <Rating value={5}/>*/}
+
         </div>
     );
 }
