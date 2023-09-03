@@ -1,30 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Accordion from "./modules/accordion/Accordion";
-import {Rating, Rating as R} from './modules/Rating/Rating';
+import {Rating, RatingValueType} from './modules/Rating/Rating';
 import {OnOff} from './modules/onOff/OnOff';
 import UncontrolledAccordion from './modules/uncontrolledAccordion/UncontrolledAccordion';
 import {UncontrolledRating} from './modules/UncontrolledRating/UncontrolledRating';
+import {UncontrolledOnOff} from './modules/uncontrolledOnOff/UncontrolledOnOff';
 
 function App() {
     console.log('App rendering')
+
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+
+    let [on, setOn] = useState(false)
+    const onClickHandler = (on: boolean) => {
+        setOn(on)
+    }
+
+    let [switchOn, setSwitchOn] = useState(false)
+
     return (
         <div className={'App'}>
-            <OnOff />
-            <OnOff />
-            <OnOff />
+            <OnOff onClickHandler={onClickHandler} on={on}/>
+            <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
             <UncontrolledAccordion titleValue={"Меню"} />
             <UncontrolledAccordion titleValue={"Друзья"} />
             <UncontrolledRating />
-            <Accordion titleValue={"Меню"} collapsed={true}/>
-            <Accordion titleValue={"Друзья"} collapsed={false}/>
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
-
+            <Accordion titleValue={"Меню"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
+            <Accordion titleValue={"Друзья"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
+            <Rating setRatingValue={setRatingValue} value={ratingValue}/>
         </div>
     );
 }
