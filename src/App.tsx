@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import Accordion from "./modules/accordion/Accordion";
+import {Accordion} from "./modules/accordion/Accordion";
 import {Rating, RatingValueType} from './modules/Rating/Rating';
 import {OnOff} from './modules/onOff/OnOff';
 import UncontrolledAccordion from './modules/uncontrolledAccordion/UncontrolledAccordion';
@@ -27,7 +27,7 @@ function App() {
             <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
             <UncontrolledAccordion titleValue={"Меню"} />
             <UncontrolledAccordion titleValue={"Друзья"} />
-            <UncontrolledRating />
+            {/*<UncontrolledRating />*/}
             <Accordion titleValue={"Меню"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
             <Accordion titleValue={"Друзья"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
             <Rating setRatingValue={setRatingValue} value={ratingValue}/>
