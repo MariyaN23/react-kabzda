@@ -50,3 +50,37 @@ export const GetValueOfUncontrolledInputbyButtonPress2 =()=> {
 
 export const ControlledInputWithFixedValue =()=> <input value={'it-kamasutra'}/>
 
+export const ControlledInput = ()=> {
+    const [value, setValue] = useState('')
+    const onChangeHandler =(e: ChangeEvent<HTMLInputElement>)=> {
+        setValue(e.currentTarget.value)
+    }
+    return (
+        <input value={value} onChange={onChangeHandler}/>
+    )
+}
+
+export const ControlledCheckbox =()=> {
+    const [checked, setChecked] = useState(false)
+    const onChangeHandler =(e: ChangeEvent<HTMLInputElement>)=> {
+        setChecked(e.currentTarget.checked)
+    }
+    return (
+        <input type={'checkbox'} checked={checked} onChange={onChangeHandler}/>
+    )
+}
+export const ControlledSelected =()=> {
+    const [select, setSelect] = useState<string | undefined>(undefined)
+    const onChangeHandler =(e: ChangeEvent<HTMLSelectElement>)=> {
+        setSelect(e.currentTarget.value)
+    }
+    return (
+        <select value={select} onChange={onChangeHandler}>
+            <option>none</option>
+            <option value={'1'}>Minsk</option>
+            <option value={'2'}>Moskow</option>
+            <option value={'3'}>Kiev</option>
+        </select>
+    )
+}
+
