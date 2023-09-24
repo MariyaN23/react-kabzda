@@ -21,6 +21,8 @@ function App() {
 
     let [switchOn, setSwitchOn] = useState(false)
 
+    let items = ['1', '2', '3']
+
     return (
         <div className={'App'}>
             <OnOff onClickHandler={onClickHandler} on={on}/>
@@ -28,8 +30,8 @@ function App() {
             <UncontrolledAccordion titleValue={"Меню"} />
             <UncontrolledAccordion titleValue={"Друзья"} />
             {/*<UncontrolledRating />*/}
-            <Accordion titleValue={"Меню"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
-            <Accordion titleValue={"Друзья"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
+            <Accordion titleValue={"Меню"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}} items={items}/>
+            <Accordion titleValue={"Друзья"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}} items={items}/>
             <Rating setRatingValue={setRatingValue} value={ratingValue}/>
         </div>
     );

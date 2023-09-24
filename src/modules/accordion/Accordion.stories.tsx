@@ -29,16 +29,30 @@ export const FirstStory: Story = {
 
 const onChangeHandler = action('onChange')
 
+let items = [
+    {title: 'Valera', value: '1'},
+    {title: 'Dimych', value: '2'},
+    {title: 'Svetlana', value: '3'},
+    {title: 'Igor', value: '4'}
+]
+
+const onClickCallBack = action('Some item was clicked')
+
 export const CollapsedAccordion =()=> {
     return <Accordion titleValue={"Collapsed Accordion"}
                       collapsed={true}
-                      setAccordionCollapsed={onChangeHandler}/>
+                      setAccordionCollapsed={onChangeHandler}
+                      items={items}
+                      onClick={onClickCallBack}
+    />
 }
 
 export const OpenedAccordion =()=> {
     return <Accordion titleValue={"Opened Accordion"}
                       collapsed={false}
-                      setAccordionCollapsed={()=>{}}/>
+                      setAccordionCollapsed={()=>{}}
+                      items={items}
+                      onClick={onClickCallBack}/>
 }
 
 export const AccordionDemo =()=> {
@@ -47,5 +61,7 @@ export const AccordionDemo =()=> {
 
     return <Accordion titleValue={"Opened Accordion"}
                       collapsed={collapsed}
-                      setAccordionCollapsed={()=>{setCollapsed(!collapsed)}}/>
+                      setAccordionCollapsed={()=>{setCollapsed(!collapsed)}}
+                      items={items}
+                      onClick={(id)=> {alert(`User with id ${id} should be happy`)}}/>
 }
