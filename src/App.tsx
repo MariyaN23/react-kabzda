@@ -21,7 +21,16 @@ function App() {
 
     let [switchOn, setSwitchOn] = useState(false)
 
-    let items = ['1', '2', '3']
+    let items = [
+        {title: 'Valera', value: '1'},
+        {title: 'Dimych', value: '2'},
+        {title: 'Svetlana', value: '3'},
+        {title: 'Igor', value: '4'}
+    ]
+    const onClickCallBack = (value: any) => {
+
+    }
+
 
     return (
         <div className={'App'}>
@@ -30,8 +39,8 @@ function App() {
             <UncontrolledAccordion titleValue={"Меню"} />
             <UncontrolledAccordion titleValue={"Друзья"} />
             {/*<UncontrolledRating />*/}
-            <Accordion titleValue={"Меню"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}} items={items}/>
-            <Accordion titleValue={"Друзья"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}} items={items}/>
+            <Accordion onClick={onClickCallBack} titleValue={"Меню"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}} items={items}/>
+            <Accordion onClick={onClickCallBack} titleValue={"Друзья"} collapsed={accordionCollapsed} setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}} items={items}/>
             <Rating setRatingValue={setRatingValue} value={ratingValue}/>
         </div>
     );

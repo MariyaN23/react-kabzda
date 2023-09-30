@@ -15,12 +15,22 @@ let items = [
     {title: 'Svetlana', value: '3'},
     {title: 'Igor', value: '4'}
 ]
-export const ControlledSelected =()=> {
+export const WithValue =()=> {
     const [select, setSelect] = useState("1")
     const onChangeHandler =(id:any)=> {
        setSelect(id)
     }
     return (
             <Select value={select} onChange={onChangeHandler} items={items} />
+    )
+}
+
+export const WithoutValue =()=> {
+    const [select, setSelect] = useState(null)
+    const onChangeHandler =(id:any)=> {
+        setSelect(id)
+    }
+    return (
+        <Select value={select} onChange={onChangeHandler} items={items} />
     )
 }
