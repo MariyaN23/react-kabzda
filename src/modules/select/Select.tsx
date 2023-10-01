@@ -8,29 +8,29 @@ type ItemsType = {
 
 type SelectPropsType = {
     value: any
-    onChange: (value:any) => void
+    onChange: (value: any) => void
     items: ItemsType[]
 }
 
-export const Select = (props: SelectPropsType) => {
-    const [collapsed,setCollapsed] = useState(false)
+const SecretSelect = (props: SelectPropsType) => {
+    const [collapsed, setCollapsed] = useState(false)
     const [hoveredItemElement, setHoveredItemElement] = useState(props.value)
 
-    const hoveredItem = props.items.find(el=> el.value === hoveredItemElement)
+    const hoveredItem = props.items.find(el => el.value === hoveredItemElement)
 
-    const toggleItems = ()=>{
+    const toggleItems = () => {
         setCollapsed(!collapsed)
     }
-    const onclickHandler = (id:any)=>{
+    const onclickHandler = (id: any) => {
         toggleItems()
         props.onChange(id)
     }
-    useEffect(()=>{
+    useEffect(() => {
         setHoveredItemElement(props.value)
     }, [props.value])
 
-    const selectedItem = props.items.find(el=> el.value === props.value)
-    const onKeyUp = (e: KeyboardEvent<HTMLDivElement>)=> {
+    const selectedItem = props.items.find(el => el.value === props.value)
+    const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
             for (let i = 0; i < props.items.length; i++) {
                 if (hoveredItemElement === props.items[i].value) {
@@ -45,15 +45,10 @@ export const Select = (props: SelectPropsType) => {
                 props.onChange(props.items[0].value)
             }
         }
-            if (e.key === 'Escape' || e.key === 'Enter') {
-                setCollapsed(!collapsed)
-            }
-/*            if (hoveredItemElement === props.items[props.items.length-1].value) {
-                setHoveredItemElement(props.items[0].value)
-                props.onChange(props.items[0].value)
-                break
-            }*/
+        if (e.key === 'Escape' || e.key === 'Enter') {
+            setCollapsed(!collapsed)
         }
+    }
 
     return (
         <div className={s.select} onKeyUp={onKeyUp} tabIndex={0}>
@@ -62,10 +57,14 @@ export const Select = (props: SelectPropsType) => {
                 <div className={s.items}>
                     {props.items.map(i => <div
                         className={s.item + ' ' + (hoveredItem === i ? s.selected : '')}
-                        onMouseEnter={()=>{setHoveredItemElement(i.value)}}
+                        onMouseEnter={() => {
+                            setHoveredItemElement(i.value)
+                        }}
                         key={i.value}
-                        onClick={()=>onclickHandler(i.value)}>{i.title}</div>)}
+                        onClick={() => onclickHandler(i.value)}>{i.title}</div>)}
                 </div>}
         </div>
     );
 };
+
+export const Select = React.memo(SecretSelect)

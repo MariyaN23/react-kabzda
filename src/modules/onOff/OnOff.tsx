@@ -5,7 +5,7 @@ type OnOffPropsType = {
     onClickHandler: (on: boolean)=>void
 }
 
-export const OnOff = (props: OnOffPropsType) => {
+export const SecretOnOff = (props: OnOffPropsType) => {
     const onStyle = {
         width: '150px',
         height: '100px',
@@ -46,4 +46,6 @@ export const OnOff = (props: OnOffPropsType) => {
         <div style={indicatorStyle}></div>
     </div>
 }
+
+export const OnOff = React.memo(SecretOnOff)
 
